@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import views
+from rest_framework.urlpatterns import format_suffix_patterns
+from django.views.generic import TemplateView
+from rest_framework.views import APIView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
+    #path('', include('management.urls')),
+    path('employeecategoryies/', views.ListEmployeeCategory.as_view()),
+    path('employeecategoryies/<int:pk>/', views.DetailEmployeeCategory.as_view()),
+    path('employees/', views.ListEmployee.as_view()),
+    path('employees/<int:pk>/', views.DetailEmployee.as_view()),
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)
+
+

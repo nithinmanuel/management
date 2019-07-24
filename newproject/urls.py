@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('management.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('/rest-auth/login/', include('rest_auth.registration.urls')),
+    path('/rest-auth/login/api-token-auth/', include('rest_auth.registration.urls')),
+    path('/rest-auth/logout/', include('rest_auth.registration.urls')),
+    path('/rest-auth/password/reset/', include('rest_auth.registration.urls')),
+    path('/rest-auth/password/reset/confirm/', include('rest_auth.registration.urls')),
+    path('/rest-auth/password/change/', include('rest_auth.registration.urls')),
+    path('/rest-auth/user/', include('rest_auth.registration.urls')),
+    path('/rest-auth/registration/verify-email/', include('rest_auth.registration.urls')),
 ]
